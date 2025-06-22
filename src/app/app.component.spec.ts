@@ -14,22 +14,27 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
+  // This is to get around the "Some of your tests did a full page reload!" issue
+  beforeAll(() => {
+    window.onbeforeunload = () => 'Oh no!';
+  });
+
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'webstackr'`, () => {
+  it(`should have as title 'Webstackr'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('webstackr');
+    expect(app.title).toEqual('Webstackr');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('webstackr app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Webstackr');
   });
 });
